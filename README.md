@@ -53,12 +53,11 @@ datasource db {
 }
 ```
 
-#### Generate the prisma client
+#### Push the schema to your database
 
-After editing the schema file, generate the prisma client.
 
 ```bash
-npx prisma generate
+npx prisma db push
 ```
 
 #### Seeding
@@ -70,3 +69,19 @@ After editing the seeder file, run the db seed command.
 ```bash
 npx prisma db seed
 ```
+
+#### Importing prisma client
+
+Import the global prisma client from `lib/prisma.ts`, instead of instantiating a new client.
+
+```javascript
+import { prisma } from '@/lib/prisma';
+
+const posts = await prisma.post.findMany();
+```
+
+## ToDo
+- Unit Testing with Jest and React Testing Library
+- E2E Testing with Cypress
+- SEO metadata, JSON-LD and Open Graph tags with Next SEO
+- Sitemap.xml and robots.txt with next-sitemap
